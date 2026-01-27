@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Mental Health & Housing Services</title>
+    <meta name="description" content="Find mental health and housing services near you. Search by location to find support organizations.">
+    <!-- S&PAA Typography - Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@300;400;600;700&family=Rocket&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet Heat Map Plugin CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.css" />
+    <!-- Leaflet Marker Cluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <img class="logo-image" src="assets/spaa-logo.png" alt="Schizophrenia & Psychosis Action Alliance logo">
+                    <div class="logo-text">
+                        <h1>Find Support Services</h1>
+                        <p>Mental Health & Housing Resources</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <section class="welcome-strip">
+            <div class="strip-content">
+                <div>
+                    <span class="hero-badge">S&PAA Community Resource Tool</span>
+                    <h2>Find support services near you</h2>
+                    <p>Use the filters to locate mental health services, housing resources, and community support in your area.</p>
+                </div>
+                <div class="strip-callout">
+                    <strong>Need immediate help?</strong>
+                    <span>Call 988</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="layout-grid">
+            <div class="left-column">
+                <section class="section-card search-card">
+                    <div class="section-header">
+                        <h3>Search by Location</h3>
+                        <p>Enter any combination of zip code, state, and service type.</p>
+                    </div>
+                    <div class="search-form">
+                        <div class="search-group">
+                            <h3>Search by Location</h3>
+                            <div class="main-search-fields">
+                                <div class="field-group">
+                                    <label for="zipInput">Zip Code</label>
+                                    <input type="text" id="zipInput" placeholder="Enter zip code (optional)" aria-label="Enter zip code">
+                                </div>
+                                
+                                <div class="field-group">
+                                    <label for="stateSelect">State</label>
+                                    <select id="stateSelect" aria-label="Select state">
+                                        <option value="">All States</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="field-group">
+                                    <label for="housingTypeSelect">Service Type</label>
+                                    <select id="housingTypeSelect" aria-label="Select service type">
+                                        <option value="">All Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="field-group search-button-group">
+                                    <button id="searchWithFiltersBtn" class="btn-primary">
+                                        <span class="btn-text">Search</span>
+                                        <span class="btn-icon">🔍</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="help-text">
+                                <span class="help-icon">ℹ️</span>
+                                <strong>Note:</strong> Select at least one option to search.
+                            </p>
+                        </div>
+                        
+                        <div class="search-group">
+                            <h3>Use My Location</h3>
+                            <div class="location-search-fields">
+                                <div class="field-group">
+                                    <label for="radiusSelect">Search within:</label>
+                                    <select id="radiusSelect" aria-label="Search radius">
+                                        <option value="5">5 miles</option>
+                                        <option value="10" selected>10 miles</option>
+                                        <option value="15">15 miles</option>
+                                        <option value="25">25 miles</option>
+                                        <option value="50">50 miles</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="field-group">
+                                    <label for="proximityServiceType">Service Type (Optional)</label>
+                                    <select id="proximityServiceType" aria-label="Select service type for proximity search">
+                                        <option value="">All Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="field-group search-button-group">
+                                    <button id="proximitySearchBtn" class="btn-secondary">
+                                        <span class="btn-text">Find Near Me</span>
+                                        <span class="btn-icon">📍</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="help-text">We'll use your current location to find nearby services.</p>
+                        </div>
+                        
+                        <div class="search-actions">
+                            <button id="clearFiltersBtn" class="btn-outline">
+                                <span class="btn-text">Clear All</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="right-column">
+                <section class="section-card guide-card">
+                    <h3>How it works</h3>
+                    <ol class="guide-steps">
+                        <li><strong>Choose filters</strong> for zip, state, or service type.</li>
+                        <li><strong>Run a search</strong> or use your current location.</li>
+                        <li><strong>View results</strong> in list or map view.</li>
+                    </ol>
+                </section>
+                <section class="section-card actions-card">
+                    <h3>What you can do</h3>
+                    <div class="action-list">
+                        <div class="action-item">📞 Call services directly</div>
+                        <div class="action-item">✉️ Email organizations</div>
+                        <div class="action-item">📍 Get directions</div>
+                        <div class="action-item">📋 Copy names</div>
+                    </div>
+                </section>
+            </div>
+        </section>
+        
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-header">
+                <h2>Services Found</h2>
+                <div class="results-summary">
+                    <span id="resultCount" class="result-count">0 services found</span>
+                    <button id="newSearchBtn" class="btn-outline">New Search</button>
+                </div>
+            </div>
+            
+            <!-- Tab Interface -->
+            <div class="view-tabs">
+                <button class="tab-btn active" id="listTabBtn" data-view="list">
+                    <span class="tab-icon">📋</span>
+                    <span class="tab-text">List View</span>
+                </button>
+                <button class="tab-btn" id="mapTabBtn" data-view="map">
+                    <span class="tab-icon">🗺️</span>
+                    <span class="tab-text">Map View</span>
+                </button>
+            </div>
+            
+            <!-- List View Container -->
+            <div class="view-container" id="listView">
+                <div class="results-container" id="resultsContainer">
+                    <!-- Results will be populated here -->
+                </div>
+            </div>
+            
+            <!-- Map View Container -->
+            <div class="view-container" id="mapView" style="display: none;">
+                <div class="map-controls">
+                    <div class="map-control-group">
+                        <label for="mapViewToggle" class="map-control-label">
+                            <input type="checkbox" id="mapViewToggle" checked>
+                            <span>Show Heat Map</span>
+                        </label>
+                    </div>
+                    <div class="map-control-group">
+                        <button id="fitBoundsBtn" class="btn-outline btn-sm">
+                            <span>📍 Fit to Results</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="mapContainer" class="map-container"></div>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <span class="legend-color heat"></span>
+                        <span class="legend-text">Service Density (Heat Map)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color marker"></span>
+                        <span class="legend-text">Individual Services (Markers)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- No Results -->
+        <section class="no-results" id="noResults" style="display: none;">
+            <div class="no-results-content">
+                <div class="no-results-icon">🔍</div>
+                <h3>No services found</h3>
+                <div class="no-results-message">
+                    <!-- Dynamic message will be inserted here by JavaScript -->
+                </div>
+                <div class="no-results-actions">
+                    <button id="tryAgainBtn" class="btn-primary">Try Again</button>
+                    <button id="expandSearchBtn" class="btn-outline">Expand Search</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Loading State -->
+        <section class="loading" id="loading" style="display: none;">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <h3>Finding services...</h3>
+                <p>Please wait while we search for services in your area</p>
+            </div>
+        </section>
+        
+        <!-- Error State -->
+        <section class="error" id="error" style="display: none;">
+            <div class="error-content">
+                <div class="error-icon">⚠️</div>
+                <h3>Unable to load services</h3>
+                <p>We're having trouble loading the service database. Please try again later.</p>
+                <button id="retryBtn" class="btn-primary">Try Again</button>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Not a comprehensive list of all services available.</p>
+                    <p class="footer-note">This service helps connect people with mental health and housing resources</p>
+                </div>
+                <div class="footer-help">
+                    <p><strong>Need immediate help?</strong></p>
+                    <p>Call 988 for mental health crisis support</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Leaflet Heat Map Plugin -->
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <!-- Alternative: If above doesn't work, try: -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script> -->
+    <!-- Leaflet Marker Cluster -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
