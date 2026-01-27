@@ -46,10 +46,10 @@ const mapContainer = document.getElementById('mapContainer');
 const mapViewToggle = document.getElementById('mapViewToggle');
 const fitBoundsBtn = document.getElementById('fitBoundsBtn');
 
-// Local file paths (relative to index.html)
-const CSV_URL = './01_master_all_states.csv';
-const ZIP_COORDINATES_URL = './zip_coordinates.json';
-const CITY_COORDINATES_URL = './city_coordinates.json';
+// URLs from GitHub repository (works with file:// protocol)
+const CSV_URL = 'https://raw.githubusercontent.com/sczaction/housing/main/01_master_all_states.csv';
+const ZIP_COORDINATES_URL = 'https://raw.githubusercontent.com/sczaction/housing/main/zip_coordinates.json';
+const CITY_COORDINATES_URL = 'https://raw.githubusercontent.com/sczaction/housing/main/city_coordinates.json';
 
 // Event listeners
 zipInput.addEventListener('keypress', function(e) {
