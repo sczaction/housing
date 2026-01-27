@@ -4,15 +4,11 @@ This folder contains three different UI variations of the S&PAA Housing & Mental
 
 ## How to Use
 
-### Option 1: Download Just the Jwalith Folder (Recommended)
+1. Download the repo and Extract the ZIP file
+2. Navigate to `Jwalith/ui-v1` (or `ui-v2` or `ui-v3`)
+3. Double-click `index.html` to open in your browser
 
-1. Go to: https://github.com/sczaction/housing/tree/main/Jwalith
-2. Click the green **"Code"** button → **"Download ZIP"**
-3. Extract the ZIP file
-4. Navigate to `Jwalith/ui-v1` (or `ui-v2` or `ui-v3`)
-5. Double-click `index.html` to open in your browser
-
-Each version is **self-contained** and works independently. No server or additional setup needed!
+Each version is self-contained and works independently.
 
 ## File Structure
 
