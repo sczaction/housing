@@ -33,7 +33,7 @@ Then open:
 ### Option B — Node (if you prefer)
 
 ```bash
-npx http-server . -p 5173
+npx http-server . -p 5000
 ```
 
 Open the same URLs as above.
