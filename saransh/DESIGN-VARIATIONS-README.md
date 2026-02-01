@@ -1,4 +1,4 @@
-# Search Tool – 3 UI/UX Design Variations
+# Search Tool – 5 UI/UX Design Variations
 
 These variations follow the **2026-01-15 Search Tool Design Guidelines** for colors, typography, and presentation. The NGO logo from **download.jpg** is used in all variations.
 
@@ -11,12 +11,12 @@ These variations follow the **2026-01-15 Search Tool Design Guidelines** for col
 There is **no build step**. Each variation is a self-contained static folder.
 
 - **Fastest**: open the variation’s `index.html` in your browser.
-  - Example: open `design-v3/index.html`
+  - Example: open `design-v4/index.html` or `design-v5/index.html`
 - **Recommended** (more reliable for local JSON fetch + browser security): run a local server and open the provided local URL.
 
 ### Option A — Python (recommended)
 
-From the `housing-main/` folder (the one that contains `design-v1/`, `design-v2/`, `design-v3/`):
+From the `saransh/` folder (the one that contains `design-v1/`, `design-v2/`, `design-v3/`, `design-v4/`, `design-v5/`):
 
 ```bash
 python -m http.server 5000
@@ -27,6 +27,8 @@ Then open:
 - `http://localhost:5000/design-v1/`
 - `http://localhost:5000/design-v2/`
 - `http://localhost:5000/design-v3/`
+- `http://localhost:5000/design-v4/`
+- `http://localhost:5000/design-v5/`
 
 ### Option B — Node (if you prefer)
 
@@ -58,6 +60,8 @@ Open the `index.html` in each folder in a browser (e.g. open file, or use a loca
 | **V1 – Classic card** | `design-v1/` | Card layout, white/light-gray background, Forest Green & Slate Blue CTAs |
 | **V2 – Two-column split** | `design-v2/` | Search-first: two cards side-by-side (Search by Location \| Find Near Me), instructions after header, results in a two-column grid |
 | **V3 – Sidebar + Main** | `design-v3/` | Left sidebar (instructions + search), right main (results); two-column grid on desktop, single column on mobile |
+| **V4 – Single-line search bar** | `design-v4/` | One horizontal strip with inline controls; user-friendly (larger touch targets, clearer labels, visible help text, focus/hover states). |
+| **V5 – Narrow centered flow** | `design-v5/` | One narrow column (560px) centered: header, instructions, then both search methods stacked with Step 1 / Step 2 labels and "or" between them. User-friendly spacing, touch targets, and softer visuals. Results full width. |
 
 Each folder contains:
 
