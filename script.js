@@ -86,8 +86,8 @@ const instructionsContent = document.getElementById('instructionsContent');
 if (instructionsToggle && instructionsContent) {
     instructionsToggle.addEventListener('click', function() {
         const isExpanded = instructionsToggle.getAttribute('aria-expanded') === 'true';
-        instructionsContent.style.display = isExpanded ? 'none' : 'block';
         instructionsToggle.setAttribute('aria-expanded', !isExpanded);
+        instructionsContent.hidden = isExpanded;
     });
 }
 
@@ -1146,11 +1146,10 @@ function addHeatMapLayer(results) {
             max: 1.0,
             minOpacity: 0.3, // Minimum opacity to ensure visibility
             gradient: {
-                0.0: 'rgba(0, 0, 255, 0.4)',    // Blue with opacity
-                0.3: 'rgba(0, 255, 0, 0.6)',    // Green with opacity
-                0.6: 'rgba(255, 255, 0, 0.8)',  // Yellow with opacity
-                0.9: 'rgba(255, 165, 0, 0.9)',  // Orange with opacity
-                1.0: 'rgba(255, 0, 0, 1.0)'     // Red with full opacity
+                0.0: 'rgba(186, 213, 226, 0.35)', // Light Blue
+                0.35: 'rgba(98, 124, 136, 0.6)',  // Slate Blue
+                0.7: 'rgba(115, 155, 100, 0.8)',  // Sage Green
+                1.0: 'rgba(82, 105, 76, 1.0)'     // Forest Green
             }
         }).addTo(map);
         

@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CC2ZWKWQ1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-9CC2ZWKWQ1');
-  </script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Mental Health & Housing Services</title>
-    <meta name="description" content="Find mental health and housing services near you. Search by location to find support organizations.">
+    <title>Housing Search Tool | S&PAA</title>
+    <meta name="description" content="Find housing with the most suitable level of support near you. Search by location to find housing resources.">
+    <!-- S&PAA Typography - Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@300;400;600;700&family=Rocket&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -29,173 +23,141 @@
         <header>
             <div class="header-content">
                 <div class="logo-section">
-                    <div class="logo-icon">🏠</div>
+                    <img class="logo-image" src="assets/spaa-logo.png" alt="Schizophrenia & Psychosis Action Alliance logo">
                     <div class="logo-text">
-                        <h1>Find Housing Support Services</h1>
-                        <p>Always make sure to verify details and do your own research.</p>
-                          <p>This tool is meant to be a starting point for your search and not a comprehensive list.</p>
+                        <h1>Housing Search Tool</h1>
+                        <p>Find housing with the most suitable level of support near you.</p>
+                        <p class="header-disclaimer"><strong class="header-disclaimer-heading">Disclaimer:</strong> This tool is meant to be a starting point for your search and not a comprehensive list. Always make sure to verify details and do your own research.</p>
                     </div>
                 </div>
             </div>
         </header>
         
-        <!-- Instructions Section -->
-        <section class="instructions-section">
-            <button class="instructions-toggle" id="instructionsToggle" aria-expanded="false">
-                <span class="instructions-icon">📖</span>
-                <span class="instructions-text">How to Use This Website</span>
-                <span class="instructions-arrow">▼</span>
-            </button>
-            <div class="instructions-content" id="instructionsContent" style="display: none;">
-                <div class="instructions-steps">
-                    <div class="instruction-step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Choose Your Search Method</h4>
-                            <p><strong>Option A - Search by Location:</strong> You must select at least one option: Enter a zip code, select a state, or choose a service type. You can combine multiple options for more specific results. <em>Note: You cannot search for all services in all states at once.</em></p>
-                            <p><strong>Option B - Find Near Me:</strong> Click "Find Near Me" to use your current location. You can select a search radius (5-50 miles) and optionally filter by service type.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="instruction-step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>View Your Results</h4>
-                            <p>Results appear in two views:</p>
-                            <ul>
-                                <li><strong>List View:</strong> See all services with details like name, location, phone, and email</li>
-                                <li><strong>Map View:</strong> See services on an interactive map with a heat map showing service density</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="instruction-step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Using the Map View</h4>
-                            <p>The map provides a visual way to explore services:</p>
-                            <ul>
-                                <li><strong>Heat Map (Default):</strong> Shows service density with colors - brighter red/yellow areas mean more services in that location. This helps you quickly identify areas with many resources.</li>
-                                <li><strong>Individual Markers:</strong> Blue pins show each service location. Click on a marker to see the organization name and details. Markers cluster together when zoomed out to prevent clutter.</li>
-                                <li><strong>Toggle Views:</strong> Use the "Show Heat Map" checkbox to switch between heat map view and individual markers</li>
-                                <li><strong>Zoom & Pan:</strong> Zoom in to see individual markers, zoom out to see density patterns. Drag the map to explore different areas</li>
-                                <li><strong>Fit to Results:</strong> Click "📍 Fit to Results" button to automatically zoom the map to show all your search results</li>
-                                <li><strong>Map Legend:</strong> The legend at the bottom explains what the colors and markers mean</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="instruction-step">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Take Action on Results</h4>
-                            <p>For each service in the list view, you can:</p>
-                            <ul>
-                                <li><strong>📞 Click phone numbers</strong> to call directly (on mobile devices)</li>
-                                <li><strong>✉️ Click email addresses</strong> to send an email</li>
-                                <li><strong>📋 Copy Name</strong> to copy the organization name to your clipboard</li>
-                                <li><strong>🔍 Search Web</strong> to find more information about the organization online</li>
-                                <li><strong>📍 Directions</strong> to get directions to the location using Google Maps</li>
-                            </ul>
-                        </div>
-                    </div>
+        <section class="welcome-strip">
+            <div class="strip-content">
+                <div>
+                    <p class="strip-lead">Find housing with the most suitable level of support near you.</p>
+                    <p class="strip-desc">Use the filters to locate housing resources and housing support in your area.</p>
                 </div>
-                
-                <div class="instructions-tips">
-                    <h4>💡 Tips</h4>
-                    <ul>
-                        <li>You don't need to fill all fields - search by state only, service type only, or any combination</li>
-                        <li>If no results appear, try expanding your search (remove filters or increase search radius)</li>
-                        <li>Use "Clear All" to reset your search and start over</li>
-                        <li>Results are sorted by distance when using "Find Near Me"</li>
-                        <li>Switch between List and Map views using the tabs at the top of the results section</li>
-                        <li>The map automatically updates when you change your search filters</li>
-                    </ul>
+                <div class="strip-callout">
+                    <strong>Need immediate help?</strong>
+                    <span>Call 988</span>
                 </div>
             </div>
         </section>
-        
-        <main class="main-content">
-            <!-- Unified Search Interface -->
-            <section class="search-section">
-                <div class="search-form">
-                    <!-- Main Search Fields -->
-                    <div class="search-group">
-                        <h3>🔍 Search for Services</h3>
-                        <div class="main-search-fields">
-                            <div class="field-group">
-                                <label for="zipInput">Zip Code</label>
-                                <input type="text" id="zipInput" placeholder="Enter zip code (optional)" aria-label="Enter zip code">
-                            </div>
-                            
-                            <div class="field-group">
-                                <label for="stateSelect">State</label>
-                                <select id="stateSelect" aria-label="Select state">
-                                    <option value="">All States</option>
-                                </select>
-                            </div>
-                            
-                            <div class="field-group">
-                                <label for="housingTypeSelect">Service Type</label>
-                                <select id="housingTypeSelect" aria-label="Select service type">
-                                    <option value="">All Services</option>
-                                </select>
-                            </div>
-                            
-                            <div class="field-group search-button-group">
-                                <button id="searchWithFiltersBtn" class="btn-primary">
-                                    <span class="btn-text">Search for Services</span>
-                                    <span class="btn-icon">🔍</span>
-                                </button>
-                            </div>
-                        </div>
-                        <p class="help-text">
-                            <span class="help-icon">ℹ️</span>
-                            <strong>Note:</strong> Please select at least one option above (zip code, state, or service type) to search. You can combine multiple options for more specific results.
-                        </p>
+
+        <section class="layout-grid">
+            <div class="left-column">
+                <section class="section-card search-card">
+                    <div class="section-header">
+                        <h3>Search by Location</h3>
+                        <p>Enter any combination of zip code, state, and service type.</p>
                     </div>
-                    
-                    <!-- Location-Based Search -->
-                    <div class="search-group">
-                        <h3>📍 Find Services Near Me</h3>
-                        <div class="location-search-fields">
-                            <div class="field-group">
-                                <label for="radiusSelect">Search within:</label>
-                                <select id="radiusSelect" aria-label="Search radius">
-                                    <option value="5">5 miles</option>
-                                    <option value="10" selected>10 miles</option>
-                                    <option value="15">15 miles</option>
-                                    <option value="25">25 miles</option>
-                                    <option value="50">50 miles</option>
-                                </select>
+                    <div class="search-form">
+                        <div class="search-group">
+                            <h3>Search by Location</h3>
+                            <div class="main-search-fields">
+                                <div class="field-group">
+                                    <label for="zipInput">Zip Code</label>
+                                    <input type="text" id="zipInput" placeholder="Enter zip code (optional)" aria-label="Enter zip code">
+                                </div>
+                                
+                                <div class="field-group">
+                                    <label for="stateSelect">State</label>
+                                    <select id="stateSelect" aria-label="Select state">
+                                        <option value="">All States</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="field-group">
+                                    <label for="housingTypeSelect">Service Type</label>
+                                    <select id="housingTypeSelect" aria-label="Select service type">
+                                        <option value="">All Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="field-group search-button-group">
+                                    <button id="searchWithFiltersBtn" class="btn-primary">
+                                        <span class="btn-text">Search</span>
+                                        <span class="btn-icon">🔍</span>
+                                    </button>
+                                </div>
                             </div>
-                            
-                            <div class="field-group">
-                                <label for="proximityServiceType">Service Type (Optional)</label>
-                                <select id="proximityServiceType" aria-label="Select service type for proximity search">
-                                    <option value="">All Services</option>
-                                </select>
-                            </div>
-                            
-                            <div class="field-group search-button-group">
-                                <button id="proximitySearchBtn" class="btn-secondary">
-                                    <span class="btn-text">Find Near Me</span>
-                                    <span class="btn-icon">📍</span>
-                                </button>
-                            </div>
+                            <p class="help-text">
+                                <span class="help-icon">ℹ️</span>
+                                <strong>Note:</strong> Select at least one option to search.
+                            </p>
                         </div>
-                        <p class="help-text">We'll use your current location to find nearby services. You can filter by service type.</p>
+                        
+                        <div class="search-group">
+                            <h3>Use My Location</h3>
+                            <div class="location-search-fields">
+                                <div class="field-group">
+                                    <label for="radiusSelect">Search within:</label>
+                                    <select id="radiusSelect" aria-label="Search radius">
+                                        <option value="5">5 miles</option>
+                                        <option value="10" selected>10 miles</option>
+                                        <option value="15">15 miles</option>
+                                        <option value="25">25 miles</option>
+                                        <option value="50">50 miles</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="field-group">
+                                    <label for="proximityServiceType">Service Type (Optional)</label>
+                                    <select id="proximityServiceType" aria-label="Select service type for proximity search">
+                                        <option value="">All Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="field-group search-button-group">
+                                    <button id="proximitySearchBtn" class="btn-secondary">
+                                        <span class="btn-text">Find Near Me</span>
+                                        <span class="btn-icon">📍</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="help-text">We'll use your current location to find nearby services.</p>
+                        </div>
+                        
+                        <div class="search-actions">
+                            <button id="clearFiltersBtn" class="btn-outline">
+                                <span class="btn-text">Clear All</span>
+                            </button>
+                        </div>
                     </div>
-                    
-                    <!-- Clear Button -->
-                    <div class="search-actions">
-                        <button id="clearFiltersBtn" class="btn-outline">
-                            <span class="btn-text">Clear All</span>
-                        </button>
+                </section>
+            </div>
+            <div class="right-column">
+                <!-- How to Use This Website (collapsible) - side -->
+                <div class="instructions-wrap instructions-wrap-side">
+                    <button type="button" class="instructions-toggle" id="instructionsToggle" aria-expanded="true" aria-controls="instructionsContent">
+                        <span class="instructions-icon" aria-hidden="true">📄</span>
+                        <span class="instructions-label">How to Use This Website</span>
+                        <span class="instructions-chevron" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="instructions-content" id="instructionsContent">
+                        <section class="section-card guide-card">
+                            <h3>How it works</h3>
+                            <ol class="guide-steps">
+                                <li><strong>Choose filters</strong> for zip, state, or service type.</li>
+                                <li><strong>Run a search</strong> or use your current location.</li>
+                                <li><strong>View results</strong> in list or map view.</li>
+                            </ol>
+                        </section>
+                        <section class="section-card actions-card">
+                            <h3>What you can do</h3>
+                            <div class="action-list">
+                                <div class="action-item">📞 Call services directly</div>
+                                <div class="action-item">✉️ Email organizations</div>
+                                <div class="action-item">📍 Get directions</div>
+                                <div class="action-item">📋 Copy names</div>
+                            </div>
+                        </section>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
         
         <!-- Results Section -->
         <section class="results-section" id="resultsSection" style="display: none;">
@@ -289,17 +251,10 @@
             </div>
         </section>
         
-        <!-- Footer -->
         <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <p>Not a comprehensive list of all services available.</p>
-                    <p class="footer-note">This service helps connect people with mental health and housing resources</p>
-                </div>
-                <div class="footer-help">
-                    <p><strong>Need immediate help?</strong></p>
-                    <p>Call 988 for mental health crisis support</p>
-                </div>
+            <div class="footer-988">
+                <p><strong>Need immediate help?</strong></p>
+                <p>Call 988 for mental health crisis support</p>
             </div>
         </footer>
     </div>
